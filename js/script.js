@@ -1,12 +1,16 @@
-let num = 266219;
-let result;
+'use strict';
 
-num = num.toString();
-result = num[0] * num[1] * num[2] * num[3] * num[4] * num[5];
-console.log(result);
-result = result ** 3;
-result = result.toString();
-result = result[0] + result[1];
-result = result++;
-console.log(result);
-alert(result);
+const num = 266219;
+
+function multi() {
+	let resultMultiplication = 1;
+	for (let i = 0; i < num.toString().length; i++) {
+		resultMultiplication *= +num.toString()[i];
+	}
+	return resultMultiplication;
+}
+let multiPlication = multi();
+console.log(multiPlication);
+let multiplPow = multiPlication **3;
+
+console.log(multiplPow.toString().slice(0,2));
