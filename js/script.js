@@ -1,40 +1,51 @@
 'use strict';
+
 const lang = 'en'; // По условию 'ru' или 'en'
-let array;
-const namePerson = 'Артем'; // Можно подставить любое имя
+const ruWeek = ['пн, вт, ср, чт, пт, сб, вс'];
+const enWeek = ['m, ts, w, th, f, st, sn'];
 
 //Вариант a, через if
+
 if (lang === 'en') {
-	array = ['m, ts, w, th, f, st, sn'];
+	console.log(enWeek);
 } else if (lang === 'ru') {
-	array = ['пн, вт, ср, чт, пт, сб, вс'];
+	console.log(ruWeek);
 } else {
 	console.log('Что-то пошло не так');
 }
-console.log(array);
 
 //Вариант b, через switch-case
 switch (lang) {
 	case 'en':
-		array = ['m, ts, w, th, f, st, sn'];
+		console.log(enWeek);
 		break;
 	case 'ru':
-		array = ['пн, вт, ср, чт, пт, сб, вс'];
+		console.log(ruWeek);
 		break;
 	default:
 		console.log('Что-то пошло не так');
 		break;
 }
-console.log(array);
 
 //Вариант c, через массив
-array = {
-	'en': ['m, ts, w, th, f, st, sn'],
-	'ru': ['пн, вт, ср, чт, пт, сб, вс'],
-};
-console.log(array[lang]);
+const arr = [
+	['m, ts, w, th, f, st, sn'],
+	['пн, вт, ср, чт, пт, сб, вс'],
+];
+
+if (lang === 'en') {
+	console.log(arr[0]);
+} else if (lang === 'ru') {
+	console.log(arr[1]);
+} else {
+	console.log('Что-то пошло не так');
+}
+
 
 //Тернарный оператор
-let position = (namePerson === 'Артем') ? console.log('Артем', 'Директор') : 
-(namePerson === 'Максим') ? console.log('Максим', 'Преподователь') : 
-console.log(namePerson, 'Студент'); 
+const namePerson = 'Артем';
+console.log(
+	(namePerson === 'Артем') ? 'Директор' :
+		(namePerson === 'Максим') ? 'Преподователь' : 'Студент'
+);
+
