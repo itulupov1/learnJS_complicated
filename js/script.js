@@ -1,34 +1,35 @@
 'use strict';
 
-// lesson05-complicated
+const week = [];
+const dateNow = new Date();
+const btn = document.querySelector('button');
 
-const arr = [];
+week.push('пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс');
 
-arr.push('2574', '16582', '7896', '47614', '761258', '45762', '789621');
+const showDaysOfWeek = () => {
+	week.forEach((item, index) => {
+		const newElem = document.createElement('p');
+		newElem.textContent = item;
+		newElem.style.fontSize = `22px`;
 
-for (let i = 0; i < arr.length; i++) {
-	if (arr[i].substr(0, 1) === '2') {
-		console.log(arr[i]);
-	} else if (arr[i].substr(0, 1) === '4') {
-		console.log(arr[i]);
-	}
-}
-
-
-function isPrime(num) {
-	let start = 2;
-	const limit = Math.sqrt(num);
-	while (start <= limit) {
-		if (num % start++ < 1) {
-			return false;
+		if (item === 'сб' || item === 'вс') {
+			newElem.style.fontStyle = 'italic';
 		}
-	}
-	return num > 1;
-}
 
-for (let i = 2; i < 100; i++) {
-	if (isPrime(i) === true) {
-		console.log(`Делители этого числа: 1 и ${i}`);
-	}
-}
+		if (index === dateNow.getDay() - 1) {
+			newElem.style.fontWeight = `bold`;
+		}
+		if (dateNow.getDay() - 1 < 0) {
+			if (index === 6) {
+				newElem.style.fontWeight = `bold`;
+			}
+		}
+		document.body.append(newElem);
+	});
+};
 
+
+btn.addEventListener('click', () => {
+	showDaysOfWeek();
+	btn.setAttribute('disabled', true);
+});
